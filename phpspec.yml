@@ -1,0 +1,6 @@
+suites:
+    main:
+        namespace: Adamnicholson\Clock
+        psr4_prefix: Adamnicholson\Clock
+        src_path: 'src/'
+        spec_path: 'tests/'

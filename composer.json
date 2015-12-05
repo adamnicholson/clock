@@ -1,0 +1,22 @@
+{
+    "name": "adamnicholson/clock",
+    "description": "A simple library for abstracting the system clock",
+    "require-dev": {
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adam Nicholson",
+            "email": "adamnicholson10@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Adamnicholson\\Clock\\": "src/"
+        }
+    },
+    "require": {
+        "nesbot/carbon": "^1.21",
+        "phpspec/phpspec": "^2.4"
+    }
+}
