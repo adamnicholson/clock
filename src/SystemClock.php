@@ -24,8 +24,16 @@ class SystemClock implements Clock
     /**
      * {@inheritDoc}
      */
-    public function getDateTime()
+    public function getCurrentDatetime()
     {
         return new Carbon('now', $this->timeZone);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function now()
+    {
+        return $this->getCurrentDatetime();
     }
 }

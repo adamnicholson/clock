@@ -9,5 +9,12 @@ interface Clock
     /**
      * @return Carbon
      */
-    public function getDateTime();
+    public function getCurrentDatetime();
+
+    /**
+     * Alias of getCurrentDatetime()
+     *
+     * @return Carbon
+     */
+    public function now();
 }

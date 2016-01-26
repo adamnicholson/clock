@@ -3,15 +3,16 @@
 namespace spec\Adamnicholson\Clock;
 
 use Adamnicholson\Clock\Clock;
+use Adamnicholson\Clock\FixedClock;
 use Carbon\Carbon;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class SystemClockSpec extends ObjectBehavior
+class FixedClockSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Adamnicholson\Clock\SystemClock');
+        $this->shouldHaveType('Adamnicholson\Clock\FixedClock');
     }
 
     public function it_implements_clock()
@@ -31,9 +32,8 @@ class SystemClockSpec extends ObjectBehavior
 
     public function it_returns_time_in_expected_timezone()
     {
-        $this->beConstructedWith(new \DateTimeZone('Africa/Harare'));
-        $this->getCurrentDatetime()->shouldEqualDateTime(new Carbon('now', 'Africa/Harare'));
-        $this->getCurrentDatetime()->shouldNotEqualDateTime(new Carbon('now', 'Europe/London'));
+        $this->beConstructedWith(new \DateTimeImmutable('2020-05-01'));
+        $this->getCurrentDatetime()->shouldEqualDateTime(new Carbon('2020-05-01'));
     }
 
     public function getMatchers()
