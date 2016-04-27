@@ -2,7 +2,7 @@
 
 namespace Adamnicholson\Clock;
 
-use Carbon\Carbon;
+use Cake\Chronos\Chronos;
 
 class FixedClock implements Clock
 {
@@ -25,7 +25,7 @@ class FixedClock implements Clock
      */
     public function getCurrentDatetime()
     {
-        return Carbon::instance(new \DateTime($this->currentDatetime->format(\DateTime::ATOM)));
+        return Chronos::instance(new \DateTime($this->currentDatetime->format(\DateTime::ATOM)));
     }
 
     /**

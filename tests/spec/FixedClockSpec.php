@@ -3,8 +3,7 @@
 namespace spec\Adamnicholson\Clock;
 
 use Adamnicholson\Clock\Clock;
-use Adamnicholson\Clock\FixedClock;
-use Carbon\Carbon;
+use Cake\Chronos\Chronos;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -22,24 +21,24 @@ class FixedClockSpec extends ObjectBehavior
 
     public function it_returns_carbon()
     {
-        $this->getCurrentDatetime()->shouldHaveType(Carbon::class);
+        $this->getCurrentDatetime()->shouldHaveType(Chronos::class);
     }
 
     public function it_returns_system_time()
     {
-        $this->getCurrentDatetime()->shouldEqualDateTime(new Carbon());
+        $this->getCurrentDatetime()->shouldEqualDateTime(new Chronos());
     }
 
     public function it_returns_time_in_expected_timezone()
     {
         $this->beConstructedWith(new \DateTimeImmutable('2020-05-01'));
-        $this->getCurrentDatetime()->shouldEqualDateTime(new Carbon('2020-05-01'));
+        $this->getCurrentDatetime()->shouldEqualDateTime(new Chronos('2020-05-01'));
     }
 
     public function getMatchers()
     {
         return [
-            'equalDateTime' => function(Carbon $subject, Carbon $expected) {
+            'equalDateTime' => function(Chronos $subject, Chronos $expected) {
                 return
                     $subject->toDateTimeString() === $expected->toDateTimeString()
                     && $subject->getTimezone() == $expected->getTimezone()

@@ -2,7 +2,7 @@
 
 namespace Adamnicholson\Clock;
 
-use Carbon\Carbon;
+use Cake\Chronos\Chronos;
 use DateTimeZone;
 
 class SystemClock implements Clock
@@ -26,7 +26,7 @@ class SystemClock implements Clock
      */
     public function getCurrentDatetime()
     {
-        return new Carbon('now', $this->timeZone);
+        return new Chronos('now', $this->timeZone);
     }
 
     /**

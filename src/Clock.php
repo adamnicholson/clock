@@ -2,19 +2,19 @@
 
 namespace Adamnicholson\Clock;
 
-use Carbon\Carbon;
+use Cake\Chronos\Chronos;
 
 interface Clock
 {
     /**
-     * @return Carbon
+     * @return Chronos
      */
     public function getCurrentDatetime();
 
     /**
      * Alias of getCurrentDatetime()
      *
-     * @return Carbon
+     * @return Chronos
      */
     public function now();
 }
