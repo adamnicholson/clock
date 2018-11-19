@@ -17,6 +17,6 @@
         }
     },
     "require": {
-        "cakephp/chronos": "^0.4.9"
+        "php": "^7.2"
     }
 }

@@ -11,27 +11,23 @@ class FixedClock implements Clock
      */
     private $currentDatetime;
 
-    /**
-     * SystemClock constructor.
-     * @param \DateTimeImmutable $currentDatetime
-     */
     public function __construct(\DateTimeImmutable $currentDatetime = null)
     {
-        $this->currentDatetime = $currentDatetime ?: new \DateTimeImmutable();
+        $this->currentDatetime = $currentDatetime ?: new \DateTimeImmutable;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getCurrentDatetime()
+    public function getCurrentDatetime(): \DateTimeImmutable
     {
-        return Chronos::instance(new \DateTime($this->currentDatetime->format(\DateTime::ATOM)));
+        return $this->currentDatetime;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function now()
+    public function now(): \DateTimeImmutable
     {
         return $this->getCurrentDatetime();
     }

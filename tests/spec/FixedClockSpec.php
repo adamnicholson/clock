@@ -5,7 +5,6 @@ namespace spec\Adamnicholson\Clock;
 use Adamnicholson\Clock\Clock;
 use Cake\Chronos\Chronos;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class FixedClockSpec extends ObjectBehavior
 {
@@ -21,31 +20,29 @@ class FixedClockSpec extends ObjectBehavior
 
     public function it_returns_carbon()
     {
-        $this->getCurrentDatetime()->shouldHaveType(Chronos::class);
+        $this->getCurrentDatetime()->shouldHaveType(\DateTimeImmutable::class);
     }
 
     public function it_returns_system_time()
     {
-        $this->getCurrentDatetime()->shouldEqualDateTime(new Chronos());
+        $this->getCurrentDatetime()->shouldEqualDateTime(new \DateTimeImmutable());
     }
 
     public function it_returns_time_in_expected_timezone()
     {
         $this->beConstructedWith(new \DateTimeImmutable('2020-05-01'));
-        $this->getCurrentDatetime()->shouldEqualDateTime(new Chronos('2020-05-01'));
+        $this->getCurrentDatetime()->shouldEqualDateTime(new \DateTimeImmutable('2020-05-01'));
     }
 
     public function getMatchers()
     {
         return [
-            'equalDateTime' => function(Chronos $subject, Chronos $expected) {
+            'equalDateTime' => function(\DateTimeImmutable $subject, \DateTimeImmutable $expected) {
                 return
-                    $subject->toDateTimeString() === $expected->toDateTimeString()
+                    $subject->format(DATE_ATOM) === $expected->format(DATE_ATOM)
                     && $subject->getTimezone() == $expected->getTimezone()
                     ;
             },
         ];
     }
-
-
 }

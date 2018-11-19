@@ -2,19 +2,17 @@
 
 namespace Adamnicholson\Clock;
 
-use Cake\Chronos\Chronos;
-
 interface Clock
 {
     /**
-     * @return Chronos
+     * @return \DateTimeImmutable
      */
-    public function getCurrentDatetime();
+    public function getCurrentDatetime(): \DateTimeImmutable;
 
     /**
      * Alias of getCurrentDatetime()
      *
-     * @return Chronos
+     * @return \DateTimeImmutable
      */
-    public function now();
+    public function now(): \DateTimeImmutable;
 }

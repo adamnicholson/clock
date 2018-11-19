@@ -2,7 +2,6 @@
 
 namespace Adamnicholson\Clock;
 
-use Cake\Chronos\Chronos;
 use DateTimeZone;
 
 class SystemClock implements Clock
@@ -24,15 +23,15 @@ class SystemClock implements Clock
     /**
      * {@inheritDoc}
      */
-    public function getCurrentDatetime()
+    public function getCurrentDatetime(): \DateTimeImmutable
     {
-        return new Chronos('now', $this->timeZone);
+        return new \DateTimeImmutable('now', $this->timeZone);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function now()
+    public function now(): \DateTimeImmutable
     {
         return $this->getCurrentDatetime();
     }
