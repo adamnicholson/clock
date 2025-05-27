@@ -34,7 +34,7 @@ class FixedClockSpec extends ObjectBehavior
         $this->getCurrentDatetime()->shouldEqualDateTime(new \DateTimeImmutable('2020-05-01'));
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return [
             'equalDateTime' => function(\DateTimeImmutable $subject, \DateTimeImmutable $expected) {

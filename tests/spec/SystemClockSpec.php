@@ -36,7 +36,7 @@ class SystemClockSpec extends ObjectBehavior
         $this->getCurrentDatetime()->shouldNotEqualDateTime(new \DateTimeImmutable('now', new \DateTimeZone('Europe/London')));
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return [
             'equalDateTime' => function(\DateTimeImmutable $subject, \DateTimeImmutable $expected) {

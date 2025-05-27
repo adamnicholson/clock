@@ -9,11 +9,11 @@ class FixedClock implements Clock
     /**
      * @var \DateTimeImmutable
      */
-    private $currentDatetime;
+    private \DateTimeImmutable $currentDatetime;
 
     public function __construct(\DateTimeImmutable $currentDatetime = null)
     {
-        $this->currentDatetime = $currentDatetime ?: new \DateTimeImmutable;
+        $this->currentDatetime = $currentDatetime ?? new \DateTimeImmutable();
     }
 
     /**

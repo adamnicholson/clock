@@ -9,7 +9,7 @@ class SystemClock implements Clock
     /**
      * @var DateTimeZone
      */
-    private $timeZone;
+    private DateTimeZone $timeZone;
 
     /**
      * SystemClock constructor.
@@ -17,7 +17,7 @@ class SystemClock implements Clock
      */
     public function __construct(DateTimeZone $timeZone = null)
     {
-        $this->timeZone = $timeZone ?: new DateTimeZone(date_default_timezone_get());
+        $this->timeZone = $timeZone ?? new DateTimeZone(date_default_timezone_get());
     }
 
     /**

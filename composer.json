@@ -2,7 +2,7 @@
     "name": "adamnicholson/clock",
     "description": "A simple library for abstracting the system clock",
     "require-dev": {
-        "phpspec/phpspec": "^2.4"
+        "phpspec/phpspec": "^7.0"
     },
     "license": "MIT",
     "authors": [
@@ -17,6 +17,6 @@
         }
     },
     "require": {
-        "php": "^7.2"
+        "php": ">=8.0 <8.5"
     }
 }
