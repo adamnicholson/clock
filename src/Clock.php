@@ -2,7 +2,7 @@
 
 namespace Adamnicholson\Clock;
 
-interface Clock
+interface Clock extends \Psr\Clock\ClockInterface
 {
     /**
      * @return \DateTimeImmutable

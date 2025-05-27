@@ -36,7 +36,33 @@ class SystemClockSpec extends ObjectBehavior
         $this->getCurrentDatetime()->shouldNotEqualDateTime(new \DateTimeImmutable('now', new \DateTimeZone('Europe/London')));
     }
 
-    public function getMatchers()
+    public function it_returns_time_in_utc_when_no_timezone_is_given()
+    {
+        $this->beConstructedWith();
+        $dt = $this->getCurrentDatetime();
+        $this->getCurrentDatetime()->shouldHaveType(\DateTimeImmutable::class);
+        $this->getCurrentDatetime()->getTimezone()->getName();
+    }
+
+    public function it_returns_different_times_on_subsequent_calls()
+    {
+        $first = $this->getCurrentDatetime();
+        sleep(1);
+        $second = $this->getCurrentDatetime();
+        if ($first == $second) {
+            throw new \Exception('SystemClock should return different times on subsequent calls');
+        }
+    }
+
+    public function it_can_be_constructed_with_a_timezone()
+    {
+        $tz = new \DateTimeZone('Asia/Tokyo');
+        $this->beConstructedWith($tz);
+        $dt = $this->getCurrentDatetime();
+        $dt->getTimezone()->getName();
+    }
+
+    public function getMatchers(): array
     {
         return [
             'equalDateTime' => function(\DateTimeImmutable $subject, \DateTimeImmutable $expected) {
